@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprinter Dmu</title>
+    <style>
+        input {
+            border-radius: 50px;
+        }
+
+        button {
+            border-radius: 50px;
+        }
+
+        #reload {
+            color: white;
+            background-color: red;
+        }
+
+        #submit {
+            color: black;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <form>
+            <input type="text" value="" id="input">
+            <button type="submit" id="submit">submit</button><button onClick="window.location.reload();"
+                id="reload">Clear</button>
+        </form>
+        <h2 id="error"></h2>
+        <ul id="ul"></ul>
+    </main>
+    <script>
+        const error = document.getElementById('error');
+        const crs = document.getElementById('input')
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const trainobj = fetch(`https://railfeed.co.uk/data/passthrough_board?crs=${crs.value}`)
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => {
+                    data.services.forEach(train => {
+                        const markup = `<li><h2>${train.toc_name}</h2> <h2>${train.toc_type.toLowerCase()}</h2> <h2>Train</h2> <h2>Departing From:  </h2><h2>${train.origin}</h2> <h2>And Arriving At: </h2><h2>${train.destination}</h2> <h2>Departed At: </h2><h2>${train.origin_departure}</h2></li>`;
+
+                        document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
+                    });
+                })
+                .catch(error => (document.getElementById("error").innerHTML = "Not Found"));
+        });
+
+
+    </script>
+</body>
+
+</html>
