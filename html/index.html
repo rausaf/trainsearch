@@ -36,7 +36,7 @@
                 src="https://counter6.optistats.ovh/private/freecounterstat.php?c=lprkjf5ctjnr9sqj7yypbs227m6cdqsl"
                 border="0" title="website counters" alt="website counters"></a>
         <h1>Train Search App</h1>
-        <h2>Enter A Crs Code And Submit To See Results</h2>
+        <h2>Enter A CRS Code And Submit To See Information About The Trains eg. Train Type</h2>
         <h3>To Clear The Results Click The Clear Button</h3>
         <form>
             <label for="input">Search Trains</label>
@@ -47,6 +47,9 @@
         </form>
         <h2 id="error"></h2>
         <ul id="ul"></ul>
+        <h2>To Learn More About CRS Codes Go To: <a
+                href="https://www.railwaycodes.org.uk/crs/crs0.shtm">www.railwaycodes.org.uk</a>
+        </h2>
     </main>
     <script>
         const error = document.getElementById("error"), crs = document.getElementById("input"); document.querySelector("form").addEventListener("submit", (e => { e.preventDefault(), fetch(`https://railfeed.co.uk/data/passthrough_board?crs=${crs.value}`).then((e => e.json())).then((e => { e.services.forEach((e => { const t = `<li><h2>${e.toc_name}</h2> <h2>${e.toc_type.toLowerCase()}</h2> <h2>Train</h2> <h2>Departing From: </h2><h2>${e.origin}</h2> <h2>And Arriving At: </h2><h2>${e.destination}</h2> <h2>Departed At: </h2><h2>${e.origin_departure}</h2></li>`; document.querySelector("ul").insertAdjacentHTML("beforeend", t) })) })).catch((e => document.getElementById("error").innerHTML = "Not Found")) }));
