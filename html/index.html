@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Train Search App in Where Users  Can search Train Timings">
     <title>Sprinter Dmu</title>
     <style>
         input {
@@ -16,11 +17,11 @@
 
         #reload {
             color: white;
-            background-color: red;
+            background-color: black;
         }
 
         #submit {
-            color: black;
+            color: white;
             background-color: green;
         }
     </style>
@@ -32,7 +33,9 @@
         <h2>Enter A Crs Code And Submit To See Results</h2>
         <h3>To Clear The Results Click The Clear Button</h3>
         <form>
-            <input type="text" value="" id="input">
+            <label for="input">Search Trains</label>
+            <input type="text" value="" id="input" name="input">
+
             <button type="submit" id="submit">submit</button><button onClick="window.location.reload();"
                 id="reload">Clear</button>
         </form>
@@ -40,26 +43,7 @@
         <ul id="ul"></ul>
     </main>
     <script>
-        const error = document.getElementById('error');
-        const crs = document.getElementById('input')
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const trainobj = fetch(`https://railfeed.co.uk/data/passthrough_board?crs=${crs.value}`)
-                .then(res => {
-                    return res.json();
-                })
-                .then(data => {
-                    data.services.forEach(train => {
-                        const markup = `<li><h2>${train.toc_name}</h2> <h2>${train.toc_type.toLowerCase()}</h2> <h2>Train</h2> <h2>Departing From:  </h2><h2>${train.origin}</h2> <h2>And Arriving At: </h2><h2>${train.destination}</h2> <h2>Departed At: </h2><h2>${train.origin_departure}</h2></li>`;
-
-                        document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
-                    });
-                })
-                .catch(error => (document.getElementById("error").innerHTML = "Not Found"));
-        });
-
-
+        const error = document.getElementById("error"), crs = document.getElementById("input"); document.querySelector("form").addEventListener("submit", (e => { e.preventDefault(), fetch(`https://railfeed.co.uk/data/passthrough_board?crs=${crs.value}`).then((e => e.json())).then((e => { e.services.forEach((e => { const t = `<li><h2>${e.toc_name}</h2> <h2>${e.toc_type.toLowerCase()}</h2> <h2>Train</h2> <h2>Departing From: </h2><h2>${e.origin}</h2> <h2>And Arriving At: </h2><h2>${e.destination}</h2> <h2>Departed At: </h2><h2>${e.origin_departure}</h2></li>`; document.querySelector("ul").insertAdjacentHTML("beforeend", t) })) })).catch((e => document.getElementById("error").innerHTML = "Not Found")) }));
     </script>
 </body>
 
