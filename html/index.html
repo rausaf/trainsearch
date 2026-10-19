@@ -9,15 +9,24 @@
     <style>
         input {
             border-radius: 50px;
+            height: 50px;
+        }
+
+        label {
+            font-size: xx-large;
+            font-weight: 1000;
         }
 
         button {
             border-radius: 50px;
+            height: 50px;
+            width: 100px;
         }
 
         #reload {
             color: white;
             background-color: black;
+            height: 50px;
         }
 
         #submit {
@@ -44,19 +53,21 @@
         <h1>Train Search App</h1>
         <h2>Enter A CRS Code(eg. PAD for london paddington and KGX for london kings cross) And Submit To See Information
             About The Trains eg. Train Type</h2>
-        <h3>To Clear The Results Click The Clear Button</h3>
-        <form>
-            <label for="input">Search Trains</label>
-            <input type="text" value="" id="input" name="input">
-
-            <button type="submit" id="submit">submit</button><button onClick="window.location.reload();"
-                id="reload">Clear</button>
-        </form>
-        <h2 id="error"></h2>
-        <ul id="ul"></ul>
         <h2>To Learn More About CRS Codes Go To: <a
                 href="https://www.railwaycodes.org.uk/crs/crs0.shtm">www.railwaycodes.org.uk</a>
         </h2>
+        <div id="center">
+            <h3>To Clear The Results Click The Clear Button</h3>
+            <form>
+                <label for="input">Search Trains</label>
+                <input type="text" value="" id="input" name="input">
+
+                <button type="submit" id="submit">submit</button><button onClick="window.location.reload();"
+                    id="reload">Clear</button>
+            </form>
+            <h2 id="error"></h2>
+            <ul id="ul"></ul>
+        </div>
     </main>
     <script>
         const error = document.getElementById("error"),
