@@ -1,0 +1,116 @@
+# ==================================================
+# ROBOTS.TXT — ADVANCED SEO + AI OPTIMIZED
+# ==================================================
+# Optimized For:
+# - Google SEO
+# - AI Search Engines
+# - Crawl Budget Optimization
+# - GEO (Generative Engine Optimization)
+# - Performance & Security
+# ==================================================
+
+# ==================================================
+# GLOBAL RULES
+# ==================================================
+
+User-agent: *
+Allow: /
+
+# ==================================================
+# BLOCK TRACKING & DYNAMIC PARAMETERS
+# ==================================================
+
+Disallow: /*?utm_
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
+
+# ==================================================
+# ALLOW IMPORTANT ASSETS
+# ==================================================
+
+Allow: *.css$
+Allow: *.js$
+Allow: *.jpg$
+Allow: *.jpeg$
+Allow: *.png$
+Allow: *.svg$
+Allow: *.webp$
+Allow: *.woff$
+Allow: *.woff2$
+Allow: *.avif$
+
+# ==================================================
+# GOOGLE
+# ==================================================
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# ==================================================
+# MICROSOFT / BING
+# ==================================================
+
+User-agent: Bingbot
+Allow: /
+
+# ==================================================
+# YAHOO
+# ==================================================
+
+User-agent: Slurp
+Allow: /
+
+# ==================================================
+# DUCKDUCKGO
+# ==================================================
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ==================================================
+# YANDEX
+# ==================================================
+
+User-agent: YandexBot
+Allow: /
+
+# ==================================================
+# LIMIT AGGRESSIVE SEO CRAWLERS
+# ==================================================
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# ==================================================
+# XML SITEMAP
+# ==================================================
+
+Sitemap: https://euralink.vercel.app/sitemap.xml
+
+# ==================================================
+# HOST
+# ==================================================
+
+Host: euralink.vercel.app
+
+# ==================================================
+# END OF FILE
+# ==================================================
